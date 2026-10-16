@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agentic Arena - Learn AI evaluation by playing</title>
+<meta name="description" content="Free game-style learning guides, roadmaps, projects and a job community for AI evaluators, annotators and agent testers.">
+<link rel="stylesheet" href="style.css"></head><body>
+<header class="nav"><a class="logo" href="#top"><span>◆</span> Agentic Arena</a>
+<nav><a href="#learn">Learn</a><a href="#roadmaps">Roadmaps</a><a href="#projects">Projects</a><a href="#usecases">Use cases</a><a href="#daily">Daily</a><a class="btn sm" href="#community">Join community</a></nav>
+<div class="hud"><span id="lvl">Lv 1</span><div class="xpbar"><i id="xpfill"></i></div><span id="xp">0 XP</span></div></header>
+<main id="top">
+<section class="hero"><div class="hero-text"><p class="pill">Free • Learn by playing • No sign-up</p>
+<h1>Level up into the <em>AI career</em> nobody taught you.</h1>
+<p>Evaluate LLMs, label data, rank answers and test agents. Pick a track, clear quests, earn XP and badges, then join the community for real jobs and freelance projects.</p>
+<div class="cta"><a class="btn" href="#learn">Start your first quest</a><a class="btn ghost" href="#community">Join WhatsApp community</a></div>
+<div class="stats"><div><b>9</b>tracks</div><div><b>27</b>quests</div><div><b>3</b>roadmaps</div><div><b>Daily</b>problems</div></div></div>
+<div class="hero-art" aria-hidden="true">
+<svg viewBox="0 0 460 420"><defs><linearGradient id="g1" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#00c2a8"/></linearGradient><filter id="bl"><feGaussianBlur stdDeviation="18"/></filter></defs>
+<circle cx="230" cy="210" r="150" fill="url(#g1)" opacity=".45" filter="url(#bl)"/>
+<rect x="90" y="70" width="280" height="190" rx="22" fill="#14122b" stroke="#7c5cff" stroke-width="3"/>
+<circle cx="150" cy="130" r="26" fill="#00c2a8"/><circle cx="150" cy="130" r="9" fill="#14122b"/>
+<rect x="195" y="112" width="140" height="14" rx="7" fill="#2b2760"/><rect x="195" y="138" width="100" height="14" rx="7" fill="#2b2760"/>
+<rect x="115" y="180" width="230" height="14" rx="7" fill="#2b2760"/><rect x="115" y="206" width="170" height="14" rx="7" fill="#2b2760"/>
+<g class="float"><rect x="260" y="230" width="150" height="60" rx="16" fill="#00c2a8"/><text x="335" y="268" text-anchor="middle" font-size="26" font-weight="800" fill="#06241f">✔ 9 / 10</text></g>
+<g class="float2"><circle cx="85" cy="300" r="42" fill="#ff7a59"/><text x="85" y="313" text-anchor="middle" font-size="38">🏆</text></g>
+<g class="float2"><circle cx="400" cy="90" r="30" fill="#f5b301"/><text x="400" y="102" text-anchor="middle" font-size="30">⭐</text></g>
+<path d="M120 345 q60 -40 120 0 t120 0" stroke="#7c5cff" stroke-width="5" fill="none" stroke-dasharray="2 12" stroke-linecap="round"/>
+</svg></div></section>
+
+<section id="learn"><h2>Learning guides</h2><p class="sub">Pick a track. Every quest is a short lesson plus a challenge. Correct answers earn XP.</p>
+<div id="tracks" class="grid tracks"></div></section>
+
+<section id="map-sec" hidden><h2 id="map-title"></h2><p class="sub" id="map-blurb"></p>
+<div class="map-wrap"><svg id="map" viewBox="0 0 800 260" preserveAspectRatio="xMidYMid meet"></svg></div>
+<p class="sub small">Tap a glowing node to open the quest. Finish them in order to unlock the badge.</p></section>
+
+<section id="roadmaps"><h2>Roadmaps</h2><p class="sub">Choose a path and follow the steps. Tap a step to tick it off.</p>
+<div id="roads" class="grid roads"></div></section>
+
+<section id="projects"><h2>Project ideas</h2><p class="sub">Build proof of skill. Free tools only.</p>
+<div id="proj" class="grid cards3"></div></section>
+
+<section id="usecases"><h2>Use cases</h2><p class="sub">Where these skills are used in the real world.</p>
+<div id="uses" class="grid cards3"></div></section>
+
+<section id="daily"><h2>Daily problem statement</h2><p class="sub">A new challenge posted every day in the community. Try today's here first.</p>
+<div class="two"><div class="card big" id="dailybox"></div>
+<div><h3>Real implementation issues</h3><div id="real"></div></div></div></section>
+
+<section id="community" class="comm"><div><h2>Join the community</h2>
+<p>Our WhatsApp Community is where we post jobs, freelance projects, the daily problem statement, and real implementation issues with fixes.</p>
+<ul class="ticks"><li>Job and freelance openings</li><li>Daily problem statement</li><li>Real implementation issues and solutions</li><li>Peer help and feedback</li></ul>
+<a class="btn" id="wa" href="#community">Join WhatsApp Community</a>
+<p class="small">Free to join. We do not guarantee jobs or paid work. Openings depend on the client and your fit.</p></div>
+<div class="badges"><h3>Your badges</h3><div id="badges"></div></div></section>
+</main>
+<footer>Agentic Arena is an independent learning project. Progress is saved only in your browser. <button id="reset" class="link">Reset progress</button></footer>
+<div id="modal" class="modal" hidden><div class="mbox"><button class="x" id="mx" aria-label="Close">✕</button><div id="mc"></div></div></div>
+<script src="data.js"></script><script src="app.js"></script></body></html>
