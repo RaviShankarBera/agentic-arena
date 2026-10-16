@@ -1,3 +1,4 @@
+var pipeSel="0-0";
 const $=s=>document.querySelector(s);
 let S=JSON.parse(localStorage.getItem("agenticarena")||'{"done":{},"steps":{},"xp":0,"daily":0}');
 const save=()=>{localStorage.setItem("agenticarena",JSON.stringify(S));hud();};
@@ -26,10 +27,9 @@ document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{const ok=+b.dataset.
 if(ok){document.querySelectorAll(".opt").forEach(x=>x.disabled=true);$("#fb").textContent="Correct! +"+(S.done[cur+i]?0:30)+" XP";if(!S.done[cur+i]){S.done[cur+i]=1;S.xp+=30;if(cnt(cur)==t.quests.length){S.xp+=50;toast("Badge unlocked: "+t.name)}else toast("+30 XP");save();tracks();}
 setTimeout(()=>{$("#modal").hidden=true;openMap(cur)},1300);}else $("#fb").textContent="Not quite. Re-read the lesson and try again.";});}
 $("#mx").onclick=()=>$("#modal").hidden=true;$("#modal").onclick=e=>{if(e.target.id=="modal")$("#modal").hidden=true};
-$("#roads").innerHTML=ROADMAPS.map((r,ri)=>`<div class="card panel road"><h3>🗺️ ${r.name}</h3><small>${r.weeks}</small>${r.steps.map((s,si)=>`<div class="step ${S.steps[ri+"-"+si]?"done":""}" data-k="${ri}-${si}"><div class="dot">${S.steps[ri+"-"+si]?"✔":""}</div><span>${s}</span></div>`).join("")}</div>`).join("");
-document.querySelectorAll(".step").forEach(e=>e.onclick=()=>{const k=e.dataset.k;S.steps[k]=!S.steps[k];if(S.steps[k]){S.xp+=10;toast("+10 XP")}save();e.classList.toggle("done");e.querySelector(".dot").textContent=S.steps[k]?"✔":""});
+roads();
 $("#proj").innerHTML=PROJECTS.map(p=>`<div class="card panel"><span class="lvl ${p.lvl}">${p.lvl}</span><h3>${p.t}</h3><p>${p.d}</p></div>`).join("");
-$("#uses").innerHTML=USECASES.map((u,i)=>`<div class="card panel"><div class="num">${"0"+(i+1)}</div><h3>${u.t}</h3><p>${u.d}</p></div>`).join("");
+$("#uses").innerHTML=USECASES.map((u,i)=>useHTML(u,i)).join("");pipe();
 const dp=PROBLEMS[new Date().getDate()%PROBLEMS.length];
 $("#dailybox").innerHTML=`<span class="lvl Starter">Today's problem</span><h3>${dp.t}</h3><textarea placeholder="Type your answer..."></textarea><button class="btn sm" id="sub">Submit +20 XP</button> <small class="small">Hint: ${dp.h}</small>`;
 $("#sub").onclick=()=>{const d=new Date().toDateString();if(S.daily==d){toast("Already done today")}else if($("#dailybox textarea").value.trim().length<10){toast("Write a bit more")}else{S.daily=d;S.xp+=20;save();toast("+20 XP. Come back tomorrow!")}};
@@ -49,3 +49,19 @@ clock();setInterval(clock,1000);
 const secs=[...document.querySelectorAll("#snav a")];addEventListener("scroll",()=>{let cur=secs[0];secs.forEach(a=>{const e=document.querySelector(a.getAttribute("href"));if(e&&!e.hidden&&e.getBoundingClientRect().top<200)cur=a});secs.forEach(a=>a.classList.toggle("on",a==cur))});
 document.getElementById("resume").onclick=e=>{const t=TRACKS.find(t=>cnt(t.id)>0&&cnt(t.id)<3)||TRACKS[0];e.preventDefault();openMap(t.id)};
 const _p=new URLSearchParams(location.search);if(_p.get("track"))openMap(_p.get("track"));if(_p.get("quest")!==null){cur=_p.get("track");quest(+_p.get("quest"))}
+
+function roadHTML(r,ri){const x=RMX[ri],n=r.steps.length,d=r.steps.filter((_,si)=>S.steps[ri+"-"+si]).length;
+return `<div class="dg panel"><div class="dg-h"><h3>${r.name}</h3><small>${r.weeks}</small></div>
+<div class="dg-stats">${x.stats.map(a=>`<div class="stat"><b>${a[0]}</b><span>${a[1]}</span></div>`).join("")}<div class="stat hot"><b>${Math.round(d/n*100)}%</b><span>your progress</span></div></div>
+<div class="band-l">THE PATH</div><div class="flow">${r.steps.map((st,si)=>`<div class="dn step ${S.steps[ri+"-"+si]?"done":""}" data-k="${ri}-${si}"><div class="ni">${S.steps[ri+"-"+si]?"✔":x.icons[si%x.icons.length]}</div><span>${st}</span></div>`).join('<i class="arr">➜</i>')}</div>
+<div class="band-l">SKILLS YOU BUILD</div><div class="chips">${x.skills.map(k=>`<em>${k}</em>`).join("")}</div>
+<div class="band-l">FREE TOOLS YOU CAN USE</div><div class="chips found">${x.tools.map(k=>`<em>${k}</em>`).join("")}</div></div>`}
+function useHTML(u,i){const x=UCX[i];
+return `<div class="card panel uc"><div class="num">${"0"+(i+1)}</div><h3>${u.t}</h3><p>${u.d}</p><div class="mini">${x.f.map(a=>`<div class="mn"><div class="ni">${a[0]}</div><span>${a[1]}</span></div>`).join('<i class="arr">➜</i>')}</div><div class="ucs"><b>${x.s[0]}</b> ${x.s[1]}</div></div>`}
+
+function pipe(){const el=$("#pipe");if(!el)return;const [bi,ni]=pipeSel.split("-").map(Number),sel=PIPE[bi].nodes[ni];
+el.innerHTML=PIPE.map((b,bi2)=>`<div class="pband"><div class="band-l">${b.band}</div><div class="flow">${b.nodes.map((n,ni2)=>`<button class="dn pn ${bi2+"-"+ni2==pipeSel?"sel":""}" data-p="${bi2}-${ni2}"><div class="ni">${n[0]}</div><span>${n[1]}</span></button>`).join('<i class="arr">➜</i>')}</div></div>`).join('<div class="down">▼</div>')+`<div class="pdetail"><b>${sel[1]}</b><p>${sel[2]}</p></div>`;
+el.querySelectorAll(".pn").forEach(b=>b.onclick=()=>{pipeSel=b.dataset.p;pipe()});}
+
+function roads(){$("#roads").innerHTML=ROADMAPS.map((r,ri)=>roadHTML(r,ri)).join("");
+document.querySelectorAll("#roads .step").forEach(e=>e.onclick=()=>{const k=e.dataset.k;S.steps[k]=!S.steps[k];if(S.steps[k]){S.xp+=10;toast("+10 XP")}save();roads();hud()});}
