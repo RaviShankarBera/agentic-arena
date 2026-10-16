@@ -34,7 +34,7 @@ const dp=PROBLEMS[new Date().getDate()%PROBLEMS.length];
 $("#dailybox").innerHTML=`<span class="lvl Starter">Today's problem</span><h3>${dp.t}</h3><textarea placeholder="Type your answer..."></textarea><button class="btn sm" id="sub">Submit +20 XP</button> <small class="small">Hint: ${dp.h}</small>`;
 $("#sub").onclick=()=>{const d=new Date().toDateString();if(S.daily==d){toast("Already done today")}else if($("#dailybox textarea").value.trim().length<10){toast("Write a bit more")}else{S.daily=d;S.xp+=20;save();toast("+20 XP. Come back tomorrow!")}};
 $("#real").innerHTML=REAL.map(r=>`<div class="rl"><b>${r.t}</b>${r.d}</div>`).join("");
-$("#wa").href=WA_LINK;$("#reset").onclick=()=>{if(confirm("Reset all progress?")){localStorage.removeItem("agenticarena");location.reload()}};
+$("#wa").href=WA_LINK;$("#wa").target="_blank";$("#wa").rel="noopener";$("#reset").onclick=()=>{if(confirm("Reset all progress?")){localStorage.removeItem("agenticarena");location.reload()}};
 hud();tracks();
 function dash(){const total=27,done=Object.keys(S.done).length,badges=TRACKS.filter(t=>cnt(t.id)==t.quests.length).length,steps=Object.values(S.steps).filter(Boolean).length,rs=ROADMAPS.reduce((a,r)=>a+r.steps.length,0);
 const set=(i,v)=>{const e=document.getElementById(i);if(e)e.textContent=v};
