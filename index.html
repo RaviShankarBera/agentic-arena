@@ -1,56 +1,49 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Agentic Arena - Learn AI evaluation by playing</title>
+<title>Stacknity Agentic Arena - Learn AI evaluation by playing</title>
 <meta name="description" content="Free game-style learning guides, roadmaps, projects and a job community for AI evaluators, annotators and agent testers.">
 <link rel="stylesheet" href="style.css"></head><body>
-<header class="nav"><a class="logo" href="#top"><span>◆</span> Agentic Arena</a>
-<nav><a href="#learn">Learn</a><a href="#roadmaps">Roadmaps</a><a href="#projects">Projects</a><a href="#usecases">Use cases</a><a href="#daily">Daily</a><a class="btn sm" href="#community">Join community</a></nav>
+<aside class="side"><a class="brand" href="#top"><svg viewBox="0 0 40 40" width="38" height="38"><circle cx="20" cy="20" r="17" fill="none" stroke="#f5b301" stroke-width="3"/><circle cx="20" cy="20" r="10" fill="none" stroke="#e09f00" stroke-width="3" stroke-dasharray="6 4"/><circle cx="20" cy="20" r="4" fill="#f5b301"/></svg><div><b>STACKNITY</b><span>AGENTIC ARENA</span></div></a>
+<nav id="snav"><a href="#top" class="on">▦ Command Center</a><a href="#learn">◎ Learning Guides</a><a href="#map-sec">✦ Quest Map</a><a href="#roadmaps">⇢ Roadmaps</a><a href="#projects">⚒ Projects</a><a href="#usecases">☰ Use Cases</a><a href="#daily">☑ Daily Mission</a><a href="#community">☏ Community</a></nav>
+<div class="voice panel"><h4>PLAYER STATUS</h4><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p id="rank">Rookie</p><small>Progress saves in your browser</small></div></aside>
+<div class="shell">
+<header class="top"><div class="panel pill-status">SYSTEM STATUS <b>● ONLINE</b></div>
+<div class="clock"><small id="date"></small><strong id="time"></strong></div>
 <div class="hud"><span id="lvl">Lv 1</span><div class="xpbar"><i id="xpfill"></i></div><span id="xp">0 XP</span></div></header>
 <main id="top">
-<section class="hero"><div class="hero-text"><p class="pill">Free • Learn by playing • No sign-up</p>
-<h1>Level up into the <em>AI career</em> nobody taught you.</h1>
-<p>Evaluate LLMs, label data, rank answers and test agents. Pick a track, clear quests, earn XP and badges, then join the community for real jobs and freelance projects.</p>
-<div class="cta"><a class="btn" href="#learn">Start your first quest</a><a class="btn ghost" href="#community">Join WhatsApp community</a></div>
-<div class="stats"><div><b>9</b>tracks</div><div><b>27</b>quests</div><div><b>3</b>roadmaps</div><div><b>Daily</b>problems</div></div></div>
-<div class="hero-art" aria-hidden="true">
-<svg viewBox="0 0 460 420"><defs><linearGradient id="g1" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#00c2a8"/></linearGradient><filter id="bl"><feGaussianBlur stdDeviation="18"/></filter></defs>
-<circle cx="230" cy="210" r="150" fill="url(#g1)" opacity=".45" filter="url(#bl)"/>
-<rect x="90" y="70" width="280" height="190" rx="22" fill="#14122b" stroke="#7c5cff" stroke-width="3"/>
-<circle cx="150" cy="130" r="26" fill="#00c2a8"/><circle cx="150" cy="130" r="9" fill="#14122b"/>
-<rect x="195" y="112" width="140" height="14" rx="7" fill="#2b2760"/><rect x="195" y="138" width="100" height="14" rx="7" fill="#2b2760"/>
-<rect x="115" y="180" width="230" height="14" rx="7" fill="#2b2760"/><rect x="115" y="206" width="170" height="14" rx="7" fill="#2b2760"/>
-<g class="float"><rect x="260" y="230" width="150" height="60" rx="16" fill="#00c2a8"/><text x="335" y="268" text-anchor="middle" font-size="26" font-weight="800" fill="#06241f">✔ 9 / 10</text></g>
-<g class="float2"><circle cx="85" cy="300" r="42" fill="#ff7a59"/><text x="85" y="313" text-anchor="middle" font-size="38">🏆</text></g>
-<g class="float2"><circle cx="400" cy="90" r="30" fill="#f5b301"/><text x="400" y="102" text-anchor="middle" font-size="30">⭐</text></g>
-<path d="M120 345 q60 -40 120 0 t120 0" stroke="#7c5cff" stroke-width="5" fill="none" stroke-dasharray="2 12" stroke-linecap="round"/>
-</svg></div></section>
-
+<section class="cmd">
+<div class="panel col"><h3>ARENA OVERVIEW</h3>
+<div class="row"><span>◎ Tracks</span><b id="ov-tracks">9</b></div><div class="row"><span>✦ Quests cleared</span><b id="ov-quests">0/27</b></div><div class="row"><span>★ Badges</span><b id="ov-badges">0/9</b></div><div class="row"><span>⇢ Roadmap steps</span><b id="ov-steps">0</b></div><div class="row"><span>⚡ Level</span><b id="ov-lvl">1</b></div></div>
+<div class="core"><svg viewBox="0 0 400 400" aria-hidden="true"><defs><radialGradient id="cg"><stop offset="0" stop-color="#9fd0ff"/><stop offset=".55" stop-color="#2f8cff" stop-opacity=".55"/><stop offset="1" stop-color="#2f8cff" stop-opacity="0"/></radialGradient><radialGradient id="cf" cx=".4" cy=".35"><stop offset="0" stop-color="#5aa9ff"/><stop offset="1" stop-color="#0b4fc4"/></radialGradient></defs>
+<circle cx="200" cy="200" r="190" fill="url(#cg)"/>
+<g class="spin1"><circle cx="200" cy="200" r="150" fill="none" stroke="#1d6fe0" stroke-width="3" stroke-dasharray="3 9"/></g>
+<g class="spin2"><circle cx="200" cy="200" r="125" fill="none" stroke="#2f8cff" stroke-width="10" stroke-dasharray="60 25 10 25"/></g>
+<g class="spin1"><circle cx="200" cy="200" r="100" fill="none" stroke="#0b4fc4" stroke-width="2" stroke-dasharray="1 7"/></g>
+<circle cx="200" cy="200" r="78" fill="url(#cf)" stroke="#0b4fc4" stroke-width="3"/>
+<text x="200" y="196" text-anchor="middle" font-size="24" font-weight="800" letter-spacing="3" fill="#fff">AGENTIC</text><text x="200" y="224" text-anchor="middle" font-size="24" font-weight="800" letter-spacing="6" fill="#d6e9ff">ARENA</text></svg>
+<p class="core-sub">AI EVALUATION • ANNOTATION • AGENTS</p></div>
+<div class="panel col feed"><h3>LIVE INTELLIGENCE FEED <b class="live">● LIVE</b></h3><div id="real"></div></div>
+</section>
+<section class="cmd2">
+<div class="panel"><h3>QUICK COMMANDS</h3><a class="qc" href="#learn">＋ Start a quest</a><a class="qc" id="resume" href="#learn">▶ Resume learning</a><a class="qc" href="#daily">☑ Today's mission</a><a class="qc" href="#community">☏ Join community</a></div>
+<div class="panel"><h3>SYSTEM MONITOR</h3><div class="gauges"><div class="g" id="g1"><b>0%</b><small>XP to next</small></div><div class="g" id="g2"><b>0%</b><small>Quests</small></div><div class="g" id="g3"><b>0%</b><small>Roadmaps</small></div></div></div>
+<div class="panel"><h3>MISSION TIMELINE</h3><div id="timeline"></div></div>
+</section>
 <section id="learn"><h2>Learning guides</h2><p class="sub">Pick a track. Every quest is a short lesson plus a challenge. Correct answers earn XP.</p>
 <div id="tracks" class="grid tracks"></div></section>
-
-<section id="map-sec" hidden><h2 id="map-title"></h2><p class="sub" id="map-blurb"></p>
+<section id="map-sec" hidden><div class="panel mapp"><h2 id="map-title"></h2><p class="sub" id="map-blurb"></p>
 <div class="map-wrap"><svg id="map" viewBox="0 0 800 260" preserveAspectRatio="xMidYMid meet"></svg></div>
-<p class="sub small">Tap a glowing node to open the quest. Finish them in order to unlock the badge.</p></section>
-
-<section id="roadmaps"><h2>Roadmaps</h2><p class="sub">Choose a path and follow the steps. Tap a step to tick it off.</p>
-<div id="roads" class="grid roads"></div></section>
-
-<section id="projects"><h2>Project ideas</h2><p class="sub">Build proof of skill. Free tools only.</p>
-<div id="proj" class="grid cards3"></div></section>
-
-<section id="usecases"><h2>Use cases</h2><p class="sub">Where these skills are used in the real world.</p>
-<div id="uses" class="grid cards3"></div></section>
-
-<section id="daily"><h2>Daily problem statement</h2><p class="sub">A new challenge posted every day in the community. Try today's here first.</p>
-<div class="two"><div class="card big" id="dailybox"></div>
-<div><h3>Real implementation issues</h3><div id="real"></div></div></div></section>
-
-<section id="community" class="comm"><div><h2>Join the community</h2>
+<p class="sub small">Tap a glowing node to open the quest. Finish them in order to unlock the badge.</p></div></section>
+<section id="roadmaps"><h2>Roadmaps</h2><p class="sub">Choose a path and follow the steps. Tap a step to tick it off.</p><div id="roads" class="grid roads"></div></section>
+<section id="projects"><h2>Project ideas</h2><p class="sub">Build proof of skill. Free tools only.</p><div id="proj" class="grid cards3"></div></section>
+<section id="usecases"><h2>Use cases</h2><p class="sub">Where these skills are used in the real world.</p><div id="uses" class="grid cards3"></div></section>
+<section id="daily"><h2>Daily mission</h2><p class="sub">A new problem statement every day in the community. Try today's here first.</p><div class="panel big" id="dailybox"></div></section>
+<section id="community" class="comm panel"><div><h2>Join the community</h2>
 <p>Our WhatsApp Community is where we post jobs, freelance projects, the daily problem statement, and real implementation issues with fixes.</p>
 <ul class="ticks"><li>Job and freelance openings</li><li>Daily problem statement</li><li>Real implementation issues and solutions</li><li>Peer help and feedback</li></ul>
 <a class="btn" id="wa" href="#community">Join WhatsApp Community</a>
 <p class="small">Free to join. We do not guarantee jobs or paid work. Openings depend on the client and your fit.</p></div>
-<div class="badges"><h3>Your badges</h3><div id="badges"></div></div></section>
+<div class="badges"><h3>YOUR BADGES</h3><div id="badges"></div></div></section>
 </main>
-<footer>Agentic Arena is an independent learning project. Progress is saved only in your browser. <button id="reset" class="link">Reset progress</button></footer>
-<div id="modal" class="modal" hidden><div class="mbox"><button class="x" id="mx" aria-label="Close">✕</button><div id="mc"></div></div></div>
+<footer>Stacknity Agentic Arena is a Stacknity learning project. Progress is saved only in your browser. <button id="reset" class="link">Reset progress</button></footer></div>
+<div id="modal" class="modal" hidden><div class="mbox panel"><button class="x" id="mx" aria-label="Close">✕</button><div id="mc"></div></div></div>
 <script src="data.js"></script><script src="app.js"></script></body></html>
