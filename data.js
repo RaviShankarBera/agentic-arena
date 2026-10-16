@@ -1,4 +1,4 @@
-const WA_LINK="#community"; // TODO: replace with real WhatsApp Community invite link
+const WA_LINK="https://chat.whatsapp.com/KVs1TjIaqLZ54ZD1Y4WpAQ";
 const TRACKS=[
 {id:"llm",icon:"✎",color:"#7c5cff",name:"LLM Response Evaluation",tag:"Judge answers like a pro",
  blurb:"Learn to score model answers for correctness, helpfulness, tone and instruction-following.",
